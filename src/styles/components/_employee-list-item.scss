@@ -1,0 +1,159 @@
+.employee-block h3, .employee-block h2,.employee-block h5,.employee-block h6 {
+	margin: 0;
+}
+.employee-block {
+	display: flex;
+	justify-content: space-between;
+	padding: 40px 20px 40px 20px;
+   border-bottom: 1px solid #E0E0E0;
+   &:first-child {
+      padding-top: 40px;
+   }
+   .person {
+      display: flex;
+      img {
+         max-width: 96px;
+         border-radius: 50% 50%;
+      }
+      .img-wrap {
+         overflow: hidden;
+         margin-right: 30px;
+      }
+   }
+}
+
+.person-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+   width: 28rem;
+   h3 {
+      font-size: 2.8rem;
+      margin-bottom: -7px;
+   }
+   h5 {
+      font-size: 24px;
+      color: #333333;
+      font-weight: normal;
+   }
+   .person-place-city {
+      border-bottom: 1px dashed #373737;
+      padding-bottom: 1px;
+      margin-right: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: all .3s ease;
+   }
+}
+
+.person-place .tooltiptext {
+    width: 232px;
+    background-color: white;
+    color: black;
+    padding: 15px;
+    text-align: left;
+    border-radius: 6px;
+    top: -93px;
+    left: -94px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: all .3s ease;
+   box-shadow: 0px 0px 46px -4px rgba(0,0,0,0.75);
+   visibility: hidden;
+}
+.person-place {
+	position: relative;
+}
+.person-place .tooltiptext:after {
+	content: ''; 
+    position: absolute; 
+    left: 99px; bottom: -20px; 
+    border: 10px solid transparent; 
+    border-top: 10px solid white; 
+}
+
+.person-place-city:hover .tooltiptext {
+    opacity: 1;
+    visibility: visible;
+}
+.person-place .floor {
+	font-size: 14px;
+	color: #828282;
+}
+
+.employee-block .time, .employee-block .info p,.employee-block .btn-edit {
+	padding-top: 8px;
+}
+.employee-block .info p {margin: 0 0 12px 0;}
+.employee-block .time h6 {
+	color: #828282;
+	font-size: 14px;
+	font-weight: normal;
+}
+.employee-block .time p {
+	color: #4F4F4F;
+	font-size: 20px;
+	margin: 10px 0;
+}
+.employee-block .time {text-align: center;}
+.employee-block .info {
+	text-align: right;
+	color: #4F4F4F;
+	font-size: 16px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+.employee-block .info a {
+	font-size: 14px;
+	color: #2F80ED;
+}
+.employee-block .info .info-text{
+	margin-right: 30px;
+	width: 180px;
+}
+.employee-block .info i {
+	color: #C4C4C4;
+	position: relative;
+	z-index: 55;
+	cursor: pointer;
+}
+.info .edit-block {
+	text-align: left;
+	 border-radius: 6px;
+	-webkit-box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.75);
+	 padding: 5px;
+	box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.75);
+	position: absolute;
+	width: 128px;
+	color: #4F4F4F;
+	padding: 2px 10px;
+	top: 0;
+	z-index:2;
+	background: white;
+	right: -23px;
+	cursor: pointer;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+.info .edit-block p:hover {
+	color: red;
+}
+.info {
+	position: relative;
+}
+.edit-block .underline {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 4px;
+}
+
+.employee-block .info i:hover .edit-block {
+	visibility: visible;
+	opacity: 1;
+}
+.edit-block {
+	position: absolute;
+}

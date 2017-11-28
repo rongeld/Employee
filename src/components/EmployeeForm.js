@@ -18,7 +18,7 @@ export default class EmployeeForm extends React.Component {
             telephoneError: '',
             isUploading: false,
             progress: 0,
-            avatarURL: props.employee ? props.employee.avatarURL :''
+            avatarURL: props.employee ? props.employee.avatarURL :"https://firebasestorage.googleapis.com/v0/b/employee-vgs-app.appspot.com/o/images%2F6a17d43b-5f17-47cf-881b-60d1ec26c902.jpg?alt=media&token=647779a3-eb64-460d-bf08-42b61f941e12"
         }
     }
 

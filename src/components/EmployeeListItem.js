@@ -4,9 +4,32 @@ import {Link} from 'react-router-dom';
 import { removeEmployee } from '../actions/employees'
 import firebase from 'firebase';
 import ImageUploader from 'react-firebase-image-uploader';
+import Time from 'react-time'
 
 const EmployeeListItem = ({dispatch, id, name, city, email, telephone, specialization,localTime,floor, avatarURL}) => {
-   console.log(id);
+      let now = new Date(),
+         currentTime,
+         timeZone,
+         tooltiptext,
+         tooltiptextCountry;
+
+      if (city === 'San Francisco') {
+         currentTime = (960 + now.getTimezoneOffset())*60*1000;
+         timeZone = new Date(now.getTime()+currentTime);
+         tooltiptext = 'Main streen st, 34 San Francisco, 08565';
+         tooltiptextCountry = 'USA';
+      } else if (city === 'Lviv') {
+         currentTime = (120 + now.getTimezoneOffset())*60*1000;
+         timeZone = new Date(now.getTime()+currentTime)
+         tooltiptext = 'Brativ Rohatyntsiv st, 21 Lviv, 79000';
+         tooltiptextCountry = 'Ukraine';
+      } else {
+         currentTime = (120 + now.getTimezoneOffset())*60*1000;
+         timeZone = new Date(now.getTime()+currentTime)
+         tooltiptext = 'Chornobrivci street, 56/3 Kyiv, 040056';
+         tooltiptextCountry = 'Ukraine';
+      }
+     
    return (
       <div className="container-wrapper">
          <div className="employee-block">
@@ -18,13 +41,20 @@ const EmployeeListItem = ({dispatch, id, name, city, email, telephone, specializ
                      <h3>{name}</h3>
                      <h5>{specialization}</h5>
                      <div className="person-place">
-                           <span className="person-place-city">{city}<span className="tooltiptext">Brativ Rohatyntsiv st, 21 L`viv, 79000 <br />Ukraine</span> </span><span className="floor">{floor} floor</span>
+                           <span className="person-place-city">
+                              {city}
+                              <span className="tooltiptext">
+                              {tooltiptext} <br />{tooltiptextCountry}
+                              </span> 
+                           </span>
+                           
+                           <span className="floor">{floor} floor</span>
                      </div>
                   </div>    
             </div>
             <div className="time">
                   <h6>local time</h6>
-                  <p>3:42 PM</p>
+                  <p><Time value={timeZone} format="HH:mm" /></p>
             </div>
             <div className="info">
                   <div className="info-text"><p>{telephone}</p>
@@ -39,7 +69,6 @@ const EmployeeListItem = ({dispatch, id, name, city, email, telephone, specializ
                            }}>Remove</button>
                         </div>
                      </i>
-                     
                   </div>
             </div>
          </div>
