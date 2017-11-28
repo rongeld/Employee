@@ -6,7 +6,6 @@ import selectEmployees from '../selectors/employees';
 const EmployeeList = (props) => {
    return (
       <div>
-         <h1>Employee List</h1>
          {props.employees.map((employee) => {
             return <EmployeeListItem  {...employee} key={employee.id}/>
          })}

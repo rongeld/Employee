@@ -12,8 +12,8 @@ import './firebase/firebase';
 
 const store = configureStore();
 
-store.dispatch(addEmployee({name: 'andrew', email:'andrew@gmail.com', city: 'Kyiv'}));
-store.dispatch(addEmployee({name: 'lara', email:'andrew@ghail.com', city: 'Lviv'}));
+// store.dispatch(addEmployee({name: 'andrew', email:'andrew@gmail.com', city: 'Kyiv'}));
+// store.dispatch(addEmployee({name: 'lara', email:'andrew@ghail.com', city: 'Lviv'}));
 store.dispatch(addEmployee({name: 'Kris', email:'kris@ghail.com',city: 'San Francisco', specialization: 'Backend'}));
 
 

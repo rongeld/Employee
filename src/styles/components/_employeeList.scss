@@ -1,0 +1,56 @@
+.employee-list-filter__input {
+	margin-bottom: 36px;
+   position: relative;
+   width: 100%;
+	padding: 10px 20px;
+	border-radius: 7px;
+	border: 1px solid #8EB7ED;
+	-webkit-transition: all .1s ease;
+	-o-transition: all .1s ease;
+   transition: all .1s ease;
+   color: #4D4D4D; 
+}
+
+.employee-list-filter__input:focus {
+	outline: none;
+	-webkit-box-shadow: 0px 0px 17px -1px rgba(47,128,237,1);
+	box-shadow: 0px 0px 11px -1px rgba(47,128,237,1);
+}
+
+.employee-list-filter__buttons button {
+	padding: 5px 40px;
+	background: none;
+	color: #4F4F4F;
+	border: 1px solid #BDBDBD;
+	border-right: none;
+	margin-right: -6px;
+	font-size: 16px;
+	outline:none;
+	cursor: pointer;
+}
+.employee-list-filter__buttons button:active {
+	outline: none;
+}
+.employee-list-filter__position {
+	margin-bottom: 30px;
+}
+.employee-list-filter__position button:first-child, .employee-list-filter__place button:first-child {
+	border-radius: 6px 0 0 6px;
+}
+.employee-list-filter__position button:last-child, .employee-list-filter__place button:last-child {
+	border-right: 1px solid #BDBDBD;
+	border-radius: 0 6px 6px 0;
+}
+
+@media screen and (max-width: 693px) {
+	.employee-list-filter__position button, .employee-list-filter__place button {
+		display: block;
+		margin: 0 0 10px 0;
+		width: 100%;
+		border: 1px solid #BDBDBD;
+		border-radius: 6px 6px 6px 6px;
+	}
+	.employee-list-filter__position button:first-child, .employee-list-filter__place button:first-child, .employee-list-filter__position button:last-child, .employee-list-filter__place button:last-child {
+		border-radius: 6px 6px 6px 6px;
+   }
+}

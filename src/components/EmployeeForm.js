@@ -8,7 +8,7 @@ export default class EmployeeForm extends React.Component {
 
         this.state = {
             name: props.employee ? props.employee.name : '',
-            specizalization: props.employee ? props.employee.specizalization : 'Frontend',
+            specialization: props.employee ? props.employee.specialization : 'Frontend',
             city: props.employee ? props.employee.city : 'Kyiv',
             floor: props.employee ? props.employee.floor : 'Ground',
             email: props.employee ? props.employee.email : '',
@@ -27,8 +27,8 @@ export default class EmployeeForm extends React.Component {
       this.setState(() => ({name}));
    }
    onSpecizalizationChange = (e) => {
-      const specizalization = e.target.value;
-      this.setState(() => ({specizalization}));
+      const specialization = e.target.value;
+      this.setState(() => ({specialization}));
    }
    onCityChange = (e) => {
       const city = e.target.value;
@@ -79,7 +79,7 @@ export default class EmployeeForm extends React.Component {
         console.log('submitted');
         this.props.onSubmit({
             name: this.state.name,
-            specizalization: this.state.specizalization,
+            specialization: this.state.specialization,
             city: this.state.city,
             floor: this.state.floor,
             email: this.state.email,
@@ -119,7 +119,7 @@ export default class EmployeeForm extends React.Component {
                   onChange={this.onNameChange}
                />
                <select 
-                  value={this.state.specizalization}
+                  value={this.state.specialization}
                   onChange={this.onSpecizalizationChange}
                >
                   <option value="Frontend">Frontend</option>

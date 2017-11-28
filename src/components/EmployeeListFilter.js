@@ -22,20 +22,30 @@ class EmployeeListFilters extends React.Component {
    
    render() {
       return (
-      <div>
-         <input 
-            type="text" 
-            value={this.props.filters.text} 
-            onChange={this.textFilter}
-            placeholder="search"
-         />
-         <button onClick={this.backend}>Backend</button>
-         <button onClick={this.frontend}>Frontend</button>
-         <button onClick={this.devops}>Devops</button>
-         <button onClick={this.operations}>Operations</button>
-         <button onClick={this.lviv}>Lviv</button>
-         <button onClick={this.kyiv}>Kyiv</button>
-         <button onClick={this.sanFrancisco}>San Francisco</button>
+      <div className="employee-list-filter">
+         <div className="container-wrapper">
+            <input 
+               className="employee-list-filter__input"
+               type="text" 
+               value={this.props.filters.text} 
+               onChange={this.textFilter}
+               name="search"
+               placeholder="Name or email, e.g. Theresa..."
+            />
+            <div className="employee-list-filter__buttons" id="buttons">
+               <div className="employee-list-filter__position">
+                  <button onClick={this.backend}>Backend</button>
+                  <button onClick={this.frontend}>Frontend</button>
+                  <button onClick={this.devops}>Devops</button>
+                  <button onClick={this.operations}>Operations</button>
+               </div>   
+               <div className="employee-list-filter__place">
+                  <button onClick={this.lviv}>Lviv</button>
+                  <button onClick={this.kyiv}>Kyiv</button>
+                  <button onClick={this.sanFrancisco}>San Francisco</button>
+               </div>
+            </div>
+         </div>
       </div>
       )
    }

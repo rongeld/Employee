@@ -9,9 +9,11 @@ export const EmployeeAmount = ({ employeeCount }) => {
    const employeeEnding = employeeCount > 1 ? 'employees' : 'employee';
 
    return (
-      <div>
-         <p>{employeeCount} {employeeEnding} {employeeWord} found</p>
-         <Link to="/create">Add Employee</Link>
+      <div className="container-wrapper">
+        <div className="employee-amount">
+          <h3><span> {employeeCount} </span> {employeeEnding} {employeeWord} found</h3>
+          <Link to="/create"><button>Add Employee</button></Link>
+        </div>
       </div>
    )
 }

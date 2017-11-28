@@ -1,0 +1,28 @@
+.employee-amount {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #E0E0E0;
+	border-top: 1px solid #E0E0E0;
+   padding: 20px 0;
+   margin-top: $l-size;
+   margin-bottom: $l-size;
+   h3 {
+      color: #4F4F4F;
+      font-size: 18px;
+      font-weight: normal;
+      margin: 0;
+      span {
+         font-weight: bold;
+      }
+   }
+   button {
+      background: #6FCF97;
+      color: white;
+      padding: 10px 50px;
+      border: 1px solid #219653;
+      border-radius: .7rem;
+      cursor: pointer;
+   }
+}

@@ -3,8 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => (
   <header>
-    <h1>List of VGS employees</h1>
-    
+    <div className="container-wrapper">
+      <h1 className="header__title">List of VGS employees</h1>
+    </div>
   </header>
 );
 
