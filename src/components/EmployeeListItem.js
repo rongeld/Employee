@@ -4,21 +4,27 @@ import {Link} from 'react-router-dom';
 import { removeEmployee } from '../actions/employees'
 import firebase from 'firebase';
 import ImageUploader from 'react-firebase-image-uploader';
-import Time from 'react-time'
+import Time from 'react-time';
 
-const EmployeeListItem = ({dispatch, id, name, city, email, telephone, specialization,localTime,floor, avatarURL}) => {
-      let now = new Date(),
+class EmployeeListItem extends React.Component {
+      constructor(props) {
+         super(props)
+
+         
+      }
+    render() {
+         let now = new Date(),
          currentTime,
          timeZone,
          tooltiptext,
          tooltiptextCountry;
 
-      if (city === 'San Francisco') {
+      if (this.props.city === 'San Francisco') {
          currentTime = (960 + now.getTimezoneOffset())*60*1000;
          timeZone = new Date(now.getTime()+currentTime);
          tooltiptext = 'Main streen st, 34 San Francisco, 08565';
          tooltiptextCountry = 'USA';
-      } else if (city === 'Lviv') {
+      } else if (this.props.city === 'Lviv') {
          currentTime = (120 + now.getTimezoneOffset())*60*1000;
          timeZone = new Date(now.getTime()+currentTime)
          tooltiptext = 'Brativ Rohatyntsiv st, 21 Lviv, 79000';
@@ -29,43 +35,43 @@ const EmployeeListItem = ({dispatch, id, name, city, email, telephone, specializ
          tooltiptext = 'Chornobrivci street, 56/3 Kyiv, 040056';
          tooltiptextCountry = 'Ukraine';
       }
-     
    return (
       <div className="container-wrapper">
          <div className="employee-block">
             <div className="person">
                <div className="img-wrap">
-                     <img src={avatarURL} alt="" />
+                     <img src={this.props.avatarURL} alt="" />
                   </div>
                   <div className="person-info">
-                     <h3>{name}</h3>
-                     <h5>{specialization}</h5>
+                     <h3>{this.props.name}</h3>
+                     <h5>{this.props.specialization}</h5>
                      <div className="person-place">
                            <span className="person-place-city">
-                              {city}
+                              {this.props.city}
                               <span className="tooltiptext">
                               {tooltiptext} <br />{tooltiptextCountry}
                               </span> 
                            </span>
                            
-                           <span className="floor">{floor} floor</span>
+                           <span className="floor">{this.props.floor} floor</span>
                      </div>
                   </div>    
             </div>
             <div className="time">
                   <h6>local time</h6>
+                  <button>Click</button>
                   <p><Time value={timeZone} format="HH:mm" /></p>
             </div>
             <div className="info">
-                  <div className="info-text"><p>{telephone}</p>
-                     <a href="mailto:{email}">{email}</a>
+                  <div className="info-text"><p>{this.props.telephone}</p>
+                     <a href="mailto:{email}">{this.props.email}</a>
                   </div>
                   <div className="btn-edit">
                      <i className="fa fa-ellipsis-v" id="btn-show-edit-block">
                            <div className="edit-block" id="edit-block">
-                           <Link to={`/edit/${id}`}><button>Edit</button></Link>
+                           <Link to={`/edit/${this.props.id}`}><button>Edit</button></Link>
                            <button className="delete" onClick={() => {
-                              dispatch(removeEmployee({id}));
+                              dispatch(removeEmployee(this.props.id));
                            }}>Remove</button>
                         </div>
                      </i>
@@ -74,6 +80,7 @@ const EmployeeListItem = ({dispatch, id, name, city, email, telephone, specializ
          </div>
       </div>
    )
+}
 }
  
 export default connect()(EmployeeListItem);
