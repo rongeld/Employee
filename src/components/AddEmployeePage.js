@@ -4,7 +4,7 @@ import EmployeeForm from './EmployeeForm';
 import {addEmployee} from '../actions/employees';
 
 const AddEmployeePage = (props) => (
-  <div>
+  <div className="container-wrapper">
     <h1>Add Employee</h1>
     <EmployeeForm 
       onSubmit={(employee) => {

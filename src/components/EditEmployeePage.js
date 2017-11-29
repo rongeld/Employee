@@ -5,7 +5,7 @@ import {editEmployee} from '../actions/employees';
 
 const EditEmployeePage = (props) => {
   return (
-    <div>
+    <div className="container-wrapper">
     <h1>Edit Employee</h1>
     <EmployeeForm
       employee={props.employee}

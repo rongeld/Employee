@@ -1,0 +1,46 @@
+.add-employee {
+   .employee-photo{
+      text-align: center;
+   }
+}
+
+.form-inputs {
+   margin-top: 2rem;
+   display: flex;
+   flex-direction: column;
+   input, select {
+      margin-bottom: 10px;
+      padding: 10px 20px;
+   }
+   button {
+      background: #6FCF97;
+      color: white;
+      padding: 10px 50px;
+      border: 1px solid #219653;
+      border-radius: .7rem;
+      cursor: pointer;
+   }
+}
+.imb-btn {
+   margin-top: 15px;
+}
+
+.half-width-item {
+   display: flex;
+   flex-direction: column;
+   flex-basis: 49%;
+}
+
+.half-width {
+   display: flex;
+   justify-content: space-between
+}
+.error-text {
+   color: red;
+}
+
+@media screen and (max-width: 560px) {
+   .half-width {
+      flex-direction: column;
+   }
+}

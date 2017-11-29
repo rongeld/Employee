@@ -6,12 +6,22 @@ import firebase from 'firebase';
 import ImageUploader from 'react-firebase-image-uploader';
 import Time from 'react-time';
 
+
 class EmployeeListItem extends React.Component {
       constructor(props) {
          super(props)
 
-         
+         this.state = {
+            isOpen: false
+         }
       }
+      addNumber = () => {
+            const trigger = !this.state.isOpen ? true : false;
+            this.setState({ isOpen: trigger}, () => {
+                  console.log(this.state.isOpen);
+            })
+      }
+      
     render() {
          let now = new Date(),
          currentTime,
@@ -35,6 +45,7 @@ class EmployeeListItem extends React.Component {
          tooltiptext = 'Chornobrivci street, 56/3 Kyiv, 040056';
          tooltiptextCountry = 'Ukraine';
       }
+
    return (
       <div className="container-wrapper">
          <div className="employee-block">
@@ -59,7 +70,6 @@ class EmployeeListItem extends React.Component {
             </div>
             <div className="time">
                   <h6>local time</h6>
-                  <button>Click</button>
                   <p><Time value={timeZone} format="HH:mm" /></p>
             </div>
             <div className="info">
@@ -67,14 +77,14 @@ class EmployeeListItem extends React.Component {
                      <a href="mailto:{email}">{this.props.email}</a>
                   </div>
                   <div className="btn-edit">
-                     <i className="fa fa-ellipsis-v" id="btn-show-edit-block">
-                           <div className="edit-block" id="edit-block">
+                     <i className="fa fa-ellipsis-v" onClick={this.addNumber} id="btn-show-edit-block">   </i>
+                           <div className={this.state.isOpen ? 'edit-block btn-edit-vis' : 'edit-block'} id="edit-block">
                            <Link to={`/edit/${this.props.id}`}><button>Edit</button></Link>
                            <button className="delete" onClick={() => {
-                              dispatch(removeEmployee(this.props.id));
+                             this.props.dispatch(removeEmployee(this.props.id));
                            }}>Remove</button>
                         </div>
-                     </i>
+                  
                   </div>
             </div>
          </div>
@@ -83,4 +93,5 @@ class EmployeeListItem extends React.Component {
 }
 }
  
+
 export default connect()(EmployeeListItem);

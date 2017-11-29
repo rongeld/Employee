@@ -28,7 +28,7 @@ export const addEmployee = (
 })
 
 // REMOVE_EMPLOYEE
-export const removeEmployee = ({id} = {}) => ({
+export const removeEmployee = (id) => ({
    type: 'REMOVE_EMPLOYEE',
    id
 })

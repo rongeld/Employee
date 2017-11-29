@@ -3719,6 +3719,12 @@ react-dom@15.6.1:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
+react-firebase-file-uploader@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-firebase-file-uploader/-/react-firebase-file-uploader-2.4.1.tgz#ddf4d9f426bc9ab477be3aa754f50dd5defdeb31"
+  dependencies:
+    uuid "^2.0.3"
+
 react-firebase-image-uploader@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-firebase-image-uploader/-/react-firebase-image-uploader-1.1.0.tgz#fffeb9230912a03f39dc4d4d77e08d07bb72b8ff"

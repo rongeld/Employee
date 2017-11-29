@@ -116,6 +116,11 @@
 .employee-block .info i {
 	color: #C4C4C4;
 	position: relative;
+	display: block;
+	background: url('/images/dots.png') no-repeat center center;
+	background-size: cover;
+	width: 10px;
+	height: 15px;
 	z-index: 55;
 	cursor: pointer;
 }
@@ -127,17 +132,35 @@
 	 padding: 5px;
 	box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.75);
 	position: absolute;
-	width: 128px;
 	color: #4F4F4F;
-	padding: 2px 10px;
+	padding: 10px 40px 10px 10px;
 	top: 0;
+	opacity: 0;
+	visibility: hidden;
 	z-index:2;
 	background: white;
-	right: -23px;
+	right: -5px;
 	cursor: pointer;
 	-webkit-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
+	button {
+		background: none;
+		border: none;
+		display: block;
+		font-size: 1.4rem;
+		margin-bottom: 15px;
+		&.delete {
+			margin-bottom: 0;
+		}
+		&:hover {
+			color: red;
+		}
+	}
+	&.btn-edit-vis {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 .info .edit-block p:hover {
 	color: red;
@@ -150,10 +173,49 @@
 	padding-bottom: 4px;
 }
 
-.employee-block .info i:hover .edit-block {
-	visibility: visible;
-	opacity: 1;
-}
 .edit-block {
 	position: absolute;
+}
+
+
+@media screen and (max-width: 900px) {
+	.employee-block {
+		        flex-direction: column;
+		        justify-content: center;
+	}
+	.person, .info {
+		        justify-content: center;
+	}
+	.person, .time {
+		margin-bottom: 20px;
+	}
+	.employee-block .info {
+		text-align: center;
+	}
+	.person-info {
+		width: auto;
+	}
+}
+
+@media screen and (max-width: 560px) {
+	.person {
+		        flex-direction: column;
+		        justify-content: center;
+	}
+	.employee-block .person .img-wrap {
+		text-align: center;
+	}
+	.person-info {
+		        align-items: center;
+	}
+	.person-info h3, .person-info h5 {
+		margin-bottom: 5px;
+	}
+	.person-info {
+		width: auto;
+		text-align: center;
+	}
+	.employee-block .person .img-wrap {
+		margin-right: 0;
+	}
 }

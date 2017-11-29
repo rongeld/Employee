@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import ImageUploader from 'react-firebase-image-uploader';
+import FileUploader from 'react-firebase-file-uploader';
 
 export default class EmployeeForm extends React.Component {
     constructor(props) {
@@ -91,76 +92,94 @@ export default class EmployeeForm extends React.Component {
    }
    render() { 
       return ( 
-         <div>
-         
+         <div className="add-employee">
             <form onSubmit={this.onSubmit}>
-                {this.state.nameError && <label htmlFor="name">{this.state.nameError}</label>}
-                <label>Avatar:</label>
+                <div className="employee-photo">
                 {
                     this.state.isUploading && <p>Progress: {this.state.progress}</p>
                 }
                 {this.state.avatarURL &&
                     <img className="img-width" src={this.state.avatarURL} />
                   }
-               
-                <ImageUploader
-                    name="avatar"
-                    storageRef={firebase.storage().ref('images')}
-                    onUploadStart={this.handleUploadStart}
-                    onUploadError={this.handleUploadError}
-                    onUploadSuccess={this.handleUploadSuccess}
-                    onProgress={this.handleProgress}
+                  <div className="imb-btn">
+                  <label style={{backgroundColor: 'steelblue', color: 'white', marginTop: 10, padding: 10, borderRadius: 4, pointer: 'cursor'}}>
+                  Select employee`s photo
+                  <FileUploader
+                  accept="image/*"
+                  name="avatar"
+                  hidden
+                  randomizeFilename
+                  storageRef={firebase.storage().ref('images')}
+                  onUploadStart={this.handleUploadStart}
+                  onUploadError={this.handleUploadError}
+                  onUploadSuccess={this.handleUploadSuccess}
+                  onProgress={this.handleProgress}
                 />
-               <input 
-                  type="text" 
-                  placeholder="Name"
-                  autoFocus
-                  value={this.state.name}
-                  onChange={this.onNameChange}
-               />
-               <select 
-                  value={this.state.specialization}
-                  onChange={this.onSpecizalizationChange}
-               >
-                  <option value="Frontend">Frontend</option>
-                  <option value="Backend">Backend</option>
-                  <option value="Devops">Devops</option>
-                  <option value="Operations">Operations</option>
-               </select>
-               <select 
-                  value={this.state.city}
-                  onChange={this.onCityChange}
-               >
-                  <option value="Kyiv">Kyiv</option>
-                  <option value="Lviv">Lviv</option>
-                  <option value="San Francisco">San Francisco</option>
-               </select>
-               <select 
-                  value={this.state.floor}
-                  onChange={this.onFlorrChange}
-               >
-                  <option value="Ground">Ground</option>
-                  <option value="1st">1st</option>
-                  <option value="2nd">2nd</option>
-               </select>
-               {this.state.emailError && <label htmlFor="email">{this.state.emailError}</label>}
-               <input 
-                  type="email" 
-                  
-                  name="email"
-                  placeholder="email"
-                  value={this.state.email}
-                  onChange={this.onEmailChange}
-               />
-               {this.state.telephoneError && <label htmlFor="telephone">{this.state.telephoneError}</label>}
-               <input 
-                  type="text" 
-                  placeholder="telephone"
-                  name="telephone"
-                  value={this.state.telephone}
-                  onChange={this.onTelephoneChange}
-               />
-               <button>Set Employee</button>
+                </label>
+                </div>
+                </div>
+                
+                <div className="form-inputs">
+                    {this.state.nameError && <label htmlFor="name">{<span className="error-text">{this.state.nameError}</span>}</label>}
+                <input 
+                    type="text" 
+                    placeholder="Name"
+                    autoFocus
+                    value={this.state.name || ''}
+                    onChange={this.onNameChange}
+                />
+                <select 
+                    value={this.state.specialization}
+                    onChange={this.onSpecizalizationChange}
+                >
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="Devops">Devops</option>
+                    <option value="Operations">Operations</option>
+                </select>
+                <select 
+                    value={this.state.city}
+                    onChange={this.onCityChange}
+                >
+                    <option value="Kyiv">Kyiv</option>
+                    <option value="Lviv">Lviv</option>
+                    <option value="San Francisco">San Francisco</option>
+                </select>
+                <select 
+                    value={this.state.floor}
+                    onChange={this.onFlorrChange}
+                >
+                    <option value="Ground">Ground</option>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                </select>
+                <div className="half-width">
+                  <div className="half-width-item">
+                  {this.state.emailError && <label htmlFor="email">{<span className="error-text">{this.state.emailError}</span>}</label>}
+                  <input 
+                      type="email" 
+                      
+                      name="email"
+                      placeholder="email"
+                      value={this.state.email}
+                      onChange={this.onEmailChange}
+                  />
+                  </div>
+                  <div className="half-width-item">
+                   
+                    {this.state.telephoneError && <label htmlFor="telephone">{<span className="error-text">{this.state.telephoneError}</span>}</label>}
+                    <input 
+                        type="text" 
+                        placeholder="telephone"
+                        name="telephone"
+                        value={this.state.telephone}
+                        onChange={this.onTelephoneChange}
+                    />
+                    </div>
+                </div>
+                
+                <button>Set Employee</button>
+               </div>
             </form>
          </div>
        )

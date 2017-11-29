@@ -7,7 +7,6 @@ const EmployeeList = (props) => {
    return (
       <div>
          {props.employees.map((employee) => {
-            console.log(employee)
             return <EmployeeListItem  {...employee} key={employee.id}/>
          })}
        

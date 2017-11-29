@@ -26,3 +26,11 @@
       cursor: pointer;
    }
 }
+@media screen and (max-width: 560px) {
+   .employee-amount {
+      flex-direction: column;
+      h3 {
+         margin-bottom: 10px;
+      }
+   }
+}
