@@ -60,6 +60,8 @@ export default class EmployeeForm extends React.Component {
    onSubmit = (e) => {
        e.preventDefault();
 
+       const phoneno = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;  
+
        if (!this.state.name) {
         this.setState(() => ({nameError: 'Please, provide a name'}))
        } else {
@@ -72,11 +74,13 @@ export default class EmployeeForm extends React.Component {
        }
        if (!this.state.telephone) {
         this.setState(() => ({telephoneError: 'Please, provide a telephone'}))
+       } else if (!this.state.telephone.match(phoneno) && this.state.telephone) {
+        this.setState(() => ({telephoneError: 'Please, provide a valid telephone'}))
        } else {
         this.setState(() => ({telephoneError: ''}))
        }
 
-    if(this.state.name && this.state.email && this.state.telephone ){
+    if(this.state.name && this.state.email && this.state.telephone.match(phoneno)){
         console.log('submitted');
         this.props.onSubmit({
             name: this.state.name,
@@ -123,6 +127,7 @@ export default class EmployeeForm extends React.Component {
                     {this.state.nameError && <label htmlFor="name">{<span className="error-text">{this.state.nameError}</span>}</label>}
                 <input 
                     type="text" 
+                    className={this.state.nameError && 'red-border'}
                     placeholder="Name"
                     autoFocus
                     value={this.state.name || ''}
@@ -158,9 +163,9 @@ export default class EmployeeForm extends React.Component {
                   {this.state.emailError && <label htmlFor="email">{<span className="error-text">{this.state.emailError}</span>}</label>}
                   <input 
                       type="email" 
-                      
+                      className={this.state.emailError && 'red-border'}
                       name="email"
-                      placeholder="email"
+                      placeholder="Email"
                       value={this.state.email}
                       onChange={this.onEmailChange}
                   />
@@ -169,8 +174,9 @@ export default class EmployeeForm extends React.Component {
                    
                     {this.state.telephoneError && <label htmlFor="telephone">{<span className="error-text">{this.state.telephoneError}</span>}</label>}
                     <input 
+                        className={this.state.telephoneError && 'red-border'}
                         type="text" 
-                        placeholder="telephone"
+                        placeholder="Telephone"
                         name="telephone"
                         value={this.state.telephone}
                         onChange={this.onTelephoneChange}
