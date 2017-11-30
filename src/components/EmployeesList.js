@@ -3,15 +3,16 @@ import {connect} from 'react-redux';
 import EmployeeListItem from './EmployeeListItem';
 import selectEmployees from '../selectors/employees';
 
-const EmployeeList = (props) => {
+class EmployeeList extends React.Component {
+   render() {
    return (
       <div>
-         {props.employees.map((employee) => {
+         {this.props.employees.map((employee) => {
             return <EmployeeListItem  {...employee} key={employee.id}/>
-         })}
-       
+         })}  
       </div>
    );
+}
 }
 
 const mapStateToProps = (state) => {

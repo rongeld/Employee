@@ -5,6 +5,7 @@ import { removeEmployee } from '../actions/employees'
 import firebase from 'firebase';
 import ImageUploader from 'react-firebase-image-uploader';
 import Time from 'react-time';
+import DeleteModal from './DeleteModal';
 
 
 class EmployeeListItem extends React.Component {
@@ -12,14 +13,30 @@ class EmployeeListItem extends React.Component {
          super(props)
 
          this.state = {
-            isOpen: false
+            isOpenEditBTN: false,
+            isOpenModal: !!!this.props.name,
+            name: this.props.name
          }
       }
       addNumber = () => {
-            const trigger = !this.state.isOpen ? true : false;
-            this.setState({ isOpen: trigger}, () => {
-                  console.log(this.state.isOpen);
+            const trigger = !this.state.isOpenEditBTN ? true : false;
+            this.setState({ isOpenEditBTN: trigger}, () => {
+                  console.log(this.state.isOpenEditBTN);
             })
+      }
+      openModal = () => {
+            const trigger = !this.state.isOpenModal ? true : false;
+            this.setState({ isOpenModal: trigger}, () => {
+                  console.log(this.state.isOpenModal);
+            })
+      }
+      deleteItemSubmit = () => {
+            this.props.dispatch(removeEmployee(this.props.id));
+      }
+      closeModal = () => {
+         this.setState({ isOpenModal: false}, () => {
+            console.log(this.state.isOpenModal);
+      })
       }
       
     render() {
@@ -47,7 +64,15 @@ class EmployeeListItem extends React.Component {
       }
 
    return (
+         
       <div className="container-wrapper">
+      <DeleteModal
+         isOpen={this.state.isOpenModal}
+         deleteItemSubmit={this.deleteItemSubmit}
+         name={this.state.name}
+         closeModal={this.closeModal}
+         />
+         
          <div className="employee-block">
             <div className="person">
                <div className="img-wrap">
@@ -78,11 +103,9 @@ class EmployeeListItem extends React.Component {
                   </div>
                   <div className="btn-edit">
                      <i className="fa fa-ellipsis-v" onClick={this.addNumber} id="btn-show-edit-block">   </i>
-                           <div className={this.state.isOpen ? 'edit-block btn-edit-vis' : 'edit-block'} id="edit-block">
+                           <div className={this.state.isOpenEditBTN ? 'edit-block btn-edit-vis' : 'edit-block'} id="edit-block">
                            <Link to={`/edit/${this.props.id}`}><button>Edit</button></Link>
-                           <button className="delete" onClick={() => {
-                             this.props.dispatch(removeEmployee(this.props.id));
-                           }}>Remove</button>
+                           <button className="delete" onClick={this.openModal}>Remove</button>
                         </div>
                   
                   </div>
@@ -95,3 +118,8 @@ class EmployeeListItem extends React.Component {
  
 
 export default connect()(EmployeeListItem);
+
+
+// () => {
+//       this.props.dispatch(removeEmployee(this.props.id));
+//     }

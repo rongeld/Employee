@@ -87,6 +87,9 @@
 .employee-block .time, .employee-block .info p,.employee-block .btn-edit {
 	padding-top: 8px;
 }
+.employee-block .btn-edit {
+	position: relative;
+}
 .employee-block .info p {margin: 0 0 12px 0;}
 .employee-block .time h6 {
 	color: #828282;
@@ -221,4 +224,8 @@
 		margin: 0 auto;
 		margin-bottom: 10px;
 	}
+}
+
+.ReactModal__Overlay--after-open {
+	z-index: 100;
 }
