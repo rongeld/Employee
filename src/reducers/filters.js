@@ -13,6 +13,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
             text: action.text
          };
       case 'SET_CITY_FILTER':
+      console.log(state.setCityFilter)
          return {
             ...state,
             setCityFilter: [...state.setCityFilter, action.city]

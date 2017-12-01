@@ -23,7 +23,6 @@
 	color: #4F4F4F;
 	border: 1px solid #BDBDBD;
 	border-right: none;
-	margin-right: -6px;
 	font-size: 16px;
 	outline:none;
 	cursor: pointer;
@@ -53,4 +52,10 @@
 	.employee-list-filter__position button:first-child, .employee-list-filter__place button:first-child, .employee-list-filter__position button:last-child, .employee-list-filter__place button:last-child {
 		border-radius: 6px 6px 6px 6px;
    }
+}
+
+.active-btn {
+		color: white !important;
+		background: #2D9CDB !important;
+  
 }
