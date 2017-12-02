@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setTextFilter, setCityFilter, setSpecializationFilter} from '../actions/filters';
+import {setTextFilter, setCityFilter, setSpecializationFilter, removeCity, removeSpecialization} from '../actions/filters';
 
 class EmployeeListFilters extends React.Component {
    state = {
-      activeSF: false,
-      activeK: false,
+      activeSF: true,
+      activeK: true,
       activeL: false,
       activeB: false,
-      activeF: false,
+      activeF: true,
       activeD: false,
       activeO: false,
   };
@@ -44,30 +44,59 @@ class EmployeeListFilters extends React.Component {
       this.props.dispatch(setTextFilter(e.target.value))
    };
    frontend = () => {
+    if (this.props.filters.setSpecializationFilter.includes('Frontend')) {
+        this.props.dispatch(removeSpecialization('Frontend'));
+    } else {
+     this.props.dispatch(setSpecializationFilter('Frontend'));
+    }
       this.toggleActiveClassF();
    }
    operations = () => {
+    if (this.props.filters.setSpecializationFilter.includes('Operations')) {
+        this.props.dispatch(removeSpecialization('Operations'));
+    } else {
+     this.props.dispatch(setSpecializationFilter('Operations'));
+    }
       this.toggleActiveClassO();
    }
    devops = () => {
+    if (this.props.filters.setSpecializationFilter.includes('Devops')) {
+        this.props.dispatch(removeSpecialization('Devops'));
+    } else {
+     this.props.dispatch(setSpecializationFilter('Devops'));
+    }
       this.toggleActiveClassD();
    }
    backend = () => {
-      
-      this.props.dispatch(setSpecializationFilter('Backend'));
-      this.props.filters.setSpecializationFilter != '' && this.props.dispatch(setSpecializationFilter(''));
+    if (this.props.filters.setSpecializationFilter.includes('Backend')) {
+        this.props.dispatch(removeSpecialization('Backend'));
+    } else {
+     this.props.dispatch(setSpecializationFilter('Backend'));
+    }
       this.toggleActiveClassB();
    }
    lviv = () => {
-      this.props.dispatch(setCityFilter('Lviv'));
+   if (this.props.filters.setCityFilter.includes('Lviv')) {
+       this.props.dispatch(removeCity('Lviv'));
+   } else {
+    this.props.dispatch(setCityFilter('Lviv'));
+   }
       this.toggleActiveClassL();
    }
    kyiv = () => {
-      this.props.dispatch(setCityFilter('Kyiv'));
+       if (this.props.filters.setCityFilter.includes('Kyiv')) {
+        this.props.dispatch(removeCity('Kyiv'));
+       } else {
+        this.props.dispatch(setCityFilter('Kyiv'));
+       }
       this.toggleActiveClassK();
    }
    sanFrancisco = () => {
-      this.props.dispatch(setCityFilter('San Francisco'));
+   if (this.props.filters.setCityFilter.includes('San Francisco')) {
+    this.props.dispatch(removeCity('San Francisco'));
+   } else {
+    this.props.dispatch(setCityFilter('San Francisco'));
+   }
       this.toggleActiveClassSF();
    }
    

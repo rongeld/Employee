@@ -92,8 +92,8 @@ const employeesReducer = (state = employeesReducerDefaultState, action) => {
 // Filter Reducer
 const filtersReducerDefaultState = {
    text: '',
-   setCityFilter: '',
-   setSpecializationFilter: ''
+   setCityFilter: ['Kyiv', 'Lviv'],
+   setSpecializationFilter: ['Frontend', 'Backend']
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -105,13 +105,11 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
          };
       case 'SET_CITY_FILTER':
          return {
-            ...state,
-            setCityFilter: action.city
-         };
+            ...state
+         }
       case 'SET_SPECIALIZATION_FILTER':
          return {
-            ...state,
-            setSpecializationFilter: action.specialization
+            ...state
          }
       default:
          return state;
@@ -123,8 +121,9 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
 const getVisibleEmployees = (employees, {text, setCityFilter, setSpecializationFilter}) => {
    return employees.filter((employees) => {
       const textMatch = employees.name.toLowerCase().includes(text.toLowerCase()) || employees.email.toLowerCase().includes(text.toLowerCase());
-      const setCityFilterMatch = employees.city.includes(setCityFilter);
-      const setSpecializationFilterMatch = employees.specialization.includes(setSpecializationFilter);
+      const setCityFilterMatch = setCityFilter.includes(employees.city);
+      const setSpecializationFilterMatch = setSpecializationFilter.includes(employees.specialization)
+      
 
       return textMatch && setCityFilterMatch && setSpecializationFilterMatch;
    });
@@ -142,30 +141,43 @@ store.subscribe(() => {
    const state = store.getState();
    const visibleEmployees = getVisibleEmployees(state.employees, state.filter)
 
-   console.log(visibleEmployees);
+   console.log(visibleEmployees)
+   console.log(state)
+   
 })
 
 const employeeOne = store.dispatch(addEmployee({
    name: 'Vera Mertens',
    specialization: 'Operations',
    email: 'jogn@hotmail.com',
-   city: 'borispol'
+   city: 'Kyiv'
 }));
 const employeeTwo = store.dispatch(addEmployee({
    name: 'Andrew Zakrevskiy',
    specialization: 'Operations',
-   email: 'vera-mertnes@hotmail.com'
+   email: 'vera-mertnes@hotmail.com',
+   city: 'Lviv'
 }));
 store.dispatch(addEmployee({
    name: 'Andrew Mead',
-   specialization: 'frontend',
-   email: 'vera-mertnes@hotmail.com'
+   specialization: 'Frontend',
+   email: 'vera-mertnes@hotmail.com',
+   city: 'Kyiv'
 }));
 store.dispatch(addEmployee({
       name: 'Sarah Connor',
-      specialization: 'backend',
-      email: 'vera-mertnes@hotmail.com'
+      specialization: 'Backend',
+      email: 'vera-mertnes@hotmail.com',
+      city: 'San Francisco'
 }));
+store.dispatch(addEmployee({
+      name: 'Sarah Connor',
+      specialization: 'Frontend',
+      email: 'vera-mertnes@hotmail.com',
+      city: 'Kyiv'
+}));
+
+
 
 // store.dispatch(removeEmployee({id: employeeOne.employee.id}));
 // store.dispatch(editEmployee(employeeTwo.employee.id, { city: 'Borispol' }))

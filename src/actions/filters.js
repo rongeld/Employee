@@ -10,8 +10,20 @@ export const setCityFilter = (city = []) => ({
    city
 })
 
+//REMOVE_CITY
+export const removeCity = (city = []) => ({
+   type: 'REMOVE_CITY',
+   city
+})
+
+//REMOVE_SPECIALIZATION
+export const removeSpecialization = (specialization = []) => ({
+   type: 'REMOVE_SPECIALIZATION',
+   specialization
+})
+
 // SET_SPECIALIZATION_FILTER
-export const setSpecializationFilter = (specialization = '') => ({
+export const setSpecializationFilter = (specialization = []) => ({
    type: 'SET_SPECIALIZATION_FILTER',
    specialization
 })
