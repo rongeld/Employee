@@ -7,7 +7,7 @@ class EmployeeListFilters extends React.Component {
       activeSF: true,
       activeK: true,
       activeL: false,
-      activeB: false,
+      activeB: true,
       activeF: true,
       activeD: false,
       activeO: false,
